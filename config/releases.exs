@@ -7,7 +7,7 @@ config :whos_in_bot,
        url: System.fetch_env!("DATABASE_URL"),
        port: System.get_env("DB_PORT", "5432") |> String.to_integer(),
        ssl: System.get_env("DB_SSL", "false") |> String.to_existing_atom(),
-       pool_size: System.get_env("DB_POOL_SIZE", "10") |> String.to_integer()
+       pool_size: System.get_env("DB_POOL_SIZE", "18") |> String.to_integer()
 
 config :nadia, token: System.fetch_env!("BOT_TOKEN")
 
