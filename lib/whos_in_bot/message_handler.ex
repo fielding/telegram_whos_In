@@ -22,14 +22,14 @@ defmodule WhosInBot.MessageHandler do
   end
 
   defp execute_command(%{ command: command, roll_call: nil }) do
-    responses = [
+    res = [
       "The only thing you are in for is disappointment. No roll call in progress, shitbrd",
       "The thirst is real!",
       "...seriously?",
       "Leave me alone, I have a headache!"
     ]
     case is_known_command(command) do
-      true -> {:ok, Enum.random(respones)}
+      true -> {:ok, Enum.random(res)}
       false -> {:error, "Unknown command"}
     end
   end
