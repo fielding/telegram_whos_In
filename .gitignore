@@ -1,0 +1,9 @@
+/_build
+/cover
+/deps
+erl_crash.dump
+*.ez
+.env
+/config/*.secret.exs
+.travis/whosinbot.pem
+priv/tls
