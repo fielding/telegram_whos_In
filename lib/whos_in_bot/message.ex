@@ -2,7 +2,7 @@ defmodule WhosInBot.Message do
   alias WhosInBot.Models.RollCall
 
   def is_known_command(command) do
-    Enum.member?(~w(end_roll_call in out maybe whos_in set_title set_in_for set_out_for set_maybe_for shh louder), command)
+    Enum.member?(~w(ga end_roll_call in out maybe whos_in set_title set_in_for set_out_for set_maybe_for shh louder), command)
   end
 
   def add_command(message = %{ text: "/" }) do

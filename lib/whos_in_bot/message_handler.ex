@@ -15,6 +15,12 @@ defmodule WhosInBot.MessageHandler do
     {:error, "Not a bot command"}
   end
 
+  defp execute_command(message = %{ command: "ga" }) do
+    RollCall.close_existing_roll_calls(message)
+    RollCall.create_roll_call(message)
+    {:ok, "Roll call started (participant limit feature coming soon)"}
+  end
+
   defp execute_command(message = %{ command: "start_roll_call" }) do
     RollCall.close_existing_roll_calls(message)
     RollCall.create_roll_call(message)
@@ -65,31 +71,31 @@ defmodule WhosInBot.MessageHandler do
   end
 
   defp execute_command(%{ command: "set_in_for", params: [] }) do
-    {:ok, "Please provide the persons first name.\n"}
+    {:ok, "Sure, just jump in your time machine if you want to use this feature... shitbirds.\n"}
   end
 
-  defp execute_command(message = %{ command: "set_in_for" }) do
-    set_state_for(message, "in")
-    {:ok, RollCall.whos_in_list(message.roll_call)}
-  end
+  # defp execute_command(message = %{ command: "set_in_for" }) do
+  #   set_state_for(message, "in")
+  #   {:ok, RollCall.whos_in_list(message.roll_call)}
+  # end
 
   defp execute_command(%{ command: "set_out_for", params: [] }) do
-    {:ok, "Please provide the persons first name.\n"}
+    {:ok, "Sure, just jump in your time machine if you want to use this feature... shitbirds.\n"}
   end
 
-  defp execute_command(message = %{ command: "set_out_for" }) do
-    set_state_for(message, "out")
-    {:ok, RollCall.whos_in_list(message.roll_call)}
-  end
+  # defp execute_command(message = %{ command: "set_out_for" }) do
+  #   set_state_for(message, "out")
+  #   {:ok, RollCall.whos_in_list(message.roll_call)}
+  # end
 
   defp execute_command(%{ command: "set_maybe_for", params: [] }) do
-    {:ok, "Please provide the persons first name.\n"}
+    {:ok, "Sure, just jump in your time machine if you want to use this feature... shitbirds.\n"}
   end
 
-  defp execute_command(message = %{ command: "set_maybe_for" }) do
-    set_state_for(message, "maybe")
-    {:ok, RollCall.whos_in_list(message.roll_call)}
-  end
+  # defp execute_command(message = %{ command: "set_maybe_for" }) do
+  #   set_state_for(message, "maybe")
+  #   {:ok, RollCall.whos_in_list(message.roll_call)}
+  # end
 
   defp execute_command(message = %{ command: "shh" }) do
     changeset = RollCall.changeset(message.roll_call, %{ quiet: true })
